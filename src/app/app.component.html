@@ -1,6 +1,6 @@
 <h1>ANGULAR-INTERVIEW</h1>
 <ul>
-  <li *ngFor="let book of bookList">
+  <li *ngFor="let book of bookList$ | async">
     {{ book }}
   </li>
 </ul>
