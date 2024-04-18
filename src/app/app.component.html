@@ -4,3 +4,4 @@
     {{ book }}
   </li>
 </ul>
+<p *ngIf="!(bookList$ | async) as books">Please wait...</p>
