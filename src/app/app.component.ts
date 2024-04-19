@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Book } from './book.model';
 import { BookService } from './book.service';
 @Component({
   selector: 'app-root',
@@ -7,20 +8,11 @@ import { BookService } from './book.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  //bookList$: Observable<string[]> | undefined;
-
-  private bookList: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([
-    '📙',
-    '📕',
-    '📗',
-    '📘',
-  ]);
-  public readonly bookList$: Observable<string[]> =
-    this.bookList.asObservable();
+  bookList$: Observable<Book[]> | undefined;
 
   constructor(private bookService: BookService) {}
 
-  ngOnInit(): void {
-    //this.bookList$ = this.bookService.bookList$;
+  ngOnInit() {
+    this.bookList$ = this.bookService.bookList$;
   }
 }

@@ -1,7 +1,4 @@
 <h1>ANGULAR-INTERVIEW</h1>
-<ul>
-  <li *ngFor="let book of bookList$ | async">
-    {{ book }}
-  </li>
-</ul>
-<p *ngIf="!(bookList$ | async) as books">Please wait...</p>
+
+<app-book-detail *ngFor="let book of bookList$ | async" [book]="book">
+</app-book-detail>
