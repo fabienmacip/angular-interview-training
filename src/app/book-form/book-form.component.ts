@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { BookService } from '../book.service';
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
@@ -16,11 +16,12 @@ export class BookFormComponent implements OnInit {
     releaseDate: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(private bookService: BookService) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
-    console.log(this.bookForm.value);
+    this.bookService.addBook(this.bookForm.value);
+    this.bookForm.reset();
   }
 }

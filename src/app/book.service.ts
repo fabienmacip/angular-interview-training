@@ -43,4 +43,11 @@ export class BookService {
     this.defaultBookList
   );
   public readonly bookList$: Observable<Book[]> = this.bookList.asObservable();
+  static addBook: any;
+
+  addBook(book: Book) {
+    const bookList = this.bookList.getValue();
+    bookList.unshift(book);
+    this.bookList.next(bookList);
+  }
 }
